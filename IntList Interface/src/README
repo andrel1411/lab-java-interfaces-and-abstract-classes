@@ -1,0 +1,53 @@
+# IntList Implementation
+
+This project provides an `IntList` interface and two implementations: `IntArrayList` and `IntVector`.
+
+## IntList Interface
+
+The `IntList` interface defines two methods:
+- `add(int number)`: Adds a new number to the list.
+- `get(int id)`: Retrieves an element by its ID.
+
+## IntArrayList
+
+`IntArrayList` stores numbers in an array with a default length of 10. When the array is full, a new array that is 50% larger is created, and all elements are moved to the new array.
+
+### Efficiency
+`IntArrayList` is more efficient in scenarios where you have a moderate number of additions, and you want to avoid excessive memory usage. The smaller growth factor (50%) means that memory overhead is lower, which can be beneficial if memory is a constraint.
+
+## IntVector
+
+`IntVector` stores numbers in an array with a default length of 20. When the array is full, a new array that is double the size of the current array is created, and all elements are moved to the new array.
+
+### Efficiency
+`IntVector` is more efficient in scenarios where you expect a large number of additions. The larger growth factor (100%) reduces the frequency of array resizing operations, which can improve performance if the list grows significantly.
+
+## Example Usage
+
+```java
+public class IntListTest {
+    public static void main(String[] args) {
+        IntList intArrayList = new IntArrayList();
+        IntList intVector = new IntVector();
+
+        // Test IntArrayList
+        for (int i = 0; i < 15; i++) {
+            intArrayList.add(i);
+        }
+        System.out.println("IntArrayList elements:");
+        for (int i = 0; i < 15; i++) {
+            System.out.print(intArrayList.get(i) + " ");
+        }
+        System.out.println();
+
+        // Test IntVector
+        for (int i = 0; i < 25; i++) {
+            intVector.add(i);
+        }
+        System.out.println("IntVector elements:");
+        for (int i = 0; i < 25; i++) {
+            System.out.print(intVector.get(i) + " ");
+        }
+        System.out.println();
+    }
+}
